@@ -17,15 +17,16 @@ def createlink():
 		soup=BeautifulSoup(x.content,"lxml")
 		mylinks=soup.find_all("a",class_="preview")
 		i=len(mylinks)
-		if(i==0):
-			print("Wrong choice entered !")
-		else:
+		
+		if(i!=0):
 			rand_i=random.randrange(0,i)
 			l=mylinks[rand_i].get("href")
 			id=l[37:43]
 			fst='https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-'
 			url = fst+id+'.jpg'
-			n=url
+			n=url	
+		else:
+			print("Wrong choice entered !")
 			
 
 	textBox=Text(root,height=4,width=10)
@@ -34,7 +35,7 @@ def createlink():
 	root.mainloop()
 	return(n)
 
-	# now fetching image data from url.
+	# Now fetching image data from url.
 
 def fetch_image(url):
 	x = requests.get(url)
